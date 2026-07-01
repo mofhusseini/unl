@@ -1,9 +1,12 @@
 name: Dispatch Create UNL
 
+# DEPRECATED — this "System A" flow generates the UNL with the master key pulled into a CI runner
+# (unl-automation `--keys=gcp-secret:…`) and is being retired in favour of offline signing + the
+# on-node monitor pipeline (XRPLF/xrplf-unl-validator). The automatic `push` trigger has been
+# removed so a `data/unl-raw.yaml` merge NO LONGER auto-generates or stages a UNL. Kept as
+# manual-only during migration; archive + delete once the new flow is fully live.
+
 on:
-  push:
-    branches: [main]
-    paths: ["data/unl-raw.yaml"]
   workflow_dispatch:
     inputs:
       dry_run:
